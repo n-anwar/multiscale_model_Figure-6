@@ -93,12 +93,12 @@ for j=1:step
     
     %% Calculating k1(t)
     
-    k1_int=trapz(t(1:j+1),(lambda(1:j+1).*(1-exp(-par.r*(t(j+1)-t(1:j+1)))).*(par.nu*pH(t(j+1)-t(1:j+1)))./((1+par.nu*(pH(t(j+1)-t(1:j+1))+pA(t(j+1)-t(1:j+1)))).^2)));
+    k1_int=trapz(t(1:j+1),(lambda(1:j+1).*(1-exp(-par.r*(t(j+1)-t(1:j+1)))).*(par.nu*pH(t(j+1)-t(1:j+1)))./((1+par.nu*(pH(t(j+1)-t(1:j+1))+pA(t(j+1)-t(1:j+1)))).^2)));  %integral part of eqn (17)
     
     g0_g1=NoHyp_Rel_Inf/(NoRel_Inf);  % eqn (21) for i=1 hypnozoite
     
     
-    k1(j+1)=g0_g1*k1_int/(1-Prob_noHyp_giv_No_Inf(j+1)); %Prob of 1 hypnozoite given no infection (eqn (20) for i=1)
+    k1(j+1)=g0_g1*k1_int/(1-Prob_noHyp_giv_No_Inf(j+1)); %Prob of 1 hypnozoite given no blood-stage infection (eqn (17))
     
     
     %% definig f(x,y) for ODEs
